@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Energy Bill Calculator</title>
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #1e3c72, #2a5298);
+            margin: 0;
+        }
+
+        /* HEADER */
+        header {
+            background: #0f1c3f;
+            color: white;
+            padding: 15px 40px;
+            font-size: 22px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        /* MAIN CARD */
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 60px);
+        }
+
+        .card {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            text-align: center;
+            width: 360px;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 12px;
+            background: #2a5298;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 15px;
+        }
+
+        button:hover {
+            background: #1e3c72;
+        }
+
+        footer {
+            text-align: center;
+            color: white;
+            padding: 10px;
+            font-size: 13px;
+        }
+
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+    ⚡ Smart Energy Management System
+</header>
+
+<!-- MAIN CONTENT -->
+<div class="container">
+
+    <div class="card">
+
+        <h2>Energy Bill Calculator</h2>
+
+        <form action="/calculate" method="post">
+
+            <label>Enter Units Consumed</label>
+
+            <input type="number" name="units" required>
+
+            <button type="submit">Calculate Bill</button>
+
+        </form>
+
+    </div>
+
+</div>
+
+<footer>
+    © 2026 | Developed by Sarthak
+</footer>
+
+</body>
+</html>
