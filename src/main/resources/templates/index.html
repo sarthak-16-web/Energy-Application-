@@ -1,111 +1,372 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <title>Energy Bill Calculator</title>
+    <meta charset="UTF-8">
+    <title>Smart Energy Management System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI", sans-serif;
+        }
 
         body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(to right, #1e3c72, #2a5298);
-            margin: 0;
+            background: linear-gradient(135deg, #11998e, #38ef7d);
+            min-height: 100vh;
         }
 
-        /* HEADER */
+        /* ================= HEADER ================= */
+
         header {
-            background: #0f1c3f;
+            background: #064635;
             color: white;
-            padding: 15px 40px;
-            font-size: 22px;
-            font-weight: bold;
-            letter-spacing: 1px;
-        }
-
-        /* MAIN CARD */
-        .container {
+            padding: 20px 50px;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            height: calc(100vh - 60px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
 
-        .card {
-            background: white;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        .logo {
+            font-size: 26px;
+            font-weight: bold;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #38ef7d;
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
             text-align: center;
-            width: 360px;
+            padding: 80px 20px;
+            color: white;
         }
 
-        h2 {
+        .hero h1 {
+            font-size: 45px;
             margin-bottom: 20px;
         }
 
-        input {
-            width: 100%;
-            padding: 10px;
-            margin-top: 10px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
+        .hero p {
+            font-size: 18px;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: auto;
         }
 
-        button {
-            margin-top: 20px;
-            padding: 12px;
-            background: #2a5298;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
+        /* ================= MAIN ================= */
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 50px 20px;
+        }
+
+        /* ================= CALCULATOR ================= */
+
+        .calculator-section {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .calc-box h2 {
+            color: #064635;
+            margin-bottom: 20px;
+        }
+
+        .input-box {
+            margin-bottom: 20px;
+        }
+
+        .input-box label {
+            font-weight: 600;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .input-box input {
             width: 100%;
+            padding: 14px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
             font-size: 15px;
         }
 
-        button:hover {
-            background: #1e3c72;
+        .btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #11998e, #38ef7d);
+            border: none;
+            border-radius: 6px;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
         }
 
-        footer {
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* ================= INFO ================= */
+
+        .info-box h3 {
+            color: #064635;
+            margin-bottom: 15px;
+        }
+
+        .info-item {
+            background: #f5fffd;
+            padding: 15px;
+            border-left: 4px solid #11998e;
+            border-radius: 6px;
+            margin-bottom: 12px;
+            font-size: 14px;
+        }
+
+        /* ================= FEATURES ================= */
+
+        .features {
+            margin-top: 60px;
             text-align: center;
             color: white;
-            padding: 10px;
-            font-size: 13px;
         }
 
+        .features h2 {
+            font-size: 32px;
+            margin-bottom: 40px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 25px;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+
+        .feature-card h4 {
+            margin-bottom: 10px;
+        }
+
+        /* ================= CONTACT ================= */
+
+        .contact {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            margin-top: 60px;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
+        }
+
+        .contact h2 {
+            color: #064635;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        .contact input,
+        .contact textarea {
+            width: 100%;
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+
+        textarea {
+            resize: none;
+            height: 120px;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #064635;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 80px;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 900px) {
+
+            .calculator-section,
+            .contact-grid,
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+        }
     </style>
+
 </head>
+
 <body>
 
-<!-- HEADER -->
-<header>
-    ⚡ Smart Energy Management System
-</header>
+    <!-- HEADER -->
+    <header>
+        <div class="logo">⚡ Smart Energy</div>
 
-<!-- MAIN CONTENT -->
-<div class="container">
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Calculator</a>
+            <a href="#">Features</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
 
-    <div class="card">
+    <!-- HERO -->
+    <section class="hero">
+        <h1>Smart Energy Management System</h1>
+        <p>
+            Calculate your electricity bill, analyze consumption,
+            and save energy using our intelligent platform.
+        </p>
+    </section>
 
-        <h2>Energy Bill Calculator</h2>
+    <!-- MAIN -->
+    <div class="container">
 
-        <form action="/calculate" method="post">
+        <!-- CALCULATOR -->
+        <section class="calculator-section">
 
-            <label>Enter Units Consumed</label>
+            <div class="calc-box">
 
-            <input type="number" name="units" required>
+                <h2>🔢 Energy Bill Calculator</h2>
 
-            <button type="submit">Calculate Bill</button>
+                <form action="/calculate" method="post">
 
-        </form>
+                    <div class="input-box">
+                        <label>Enter Units (kWh)</label>
+                        <input type="number" name="units" required>
+                    </div>
+
+                    <button class="btn" type="submit">
+                        💰 Calculate Bill
+                    </button>
+
+                </form>
+
+            </div>
+
+            <div class="info-box">
+
+                <h3>📊 Billing Info</h3>
+
+                <div class="info-item">✔ Rate: ₹12 / unit</div>
+                <div class="info-item">✔ GST: 18%</div>
+                <div class="info-item">✔ Due: 15 Days</div>
+                <div class="info-item">✔ Online Payment</div>
+                <div class="info-item">✔ PDF Download</div>
+
+            </div>
+
+        </section>
+
+        <!-- FEATURES -->
+        <section class="features">
+
+            <h2>🚀 Our Features</h2>
+
+            <div class="feature-grid">
+
+                <div class="feature-card">
+                    <h4>📈 Smart Analytics</h4>
+                    <p>Track your monthly usage patterns.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>💳 Easy Payment</h4>
+                    <p>Pay bills securely online.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>🌱 Energy Saving</h4>
+                    <p>Get personalized saving tips.</p>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- CONTACT -->
+        <section class="contact">
+
+            <h2>📩 Send Request / Support</h2>
+
+            <form>
+
+                <div class="contact-grid">
+
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Email" required>
+                    <input type="text" placeholder="Subject" required>
+                    <input type="tel" placeholder="Mobile Number" required>
+
+                </div>
+
+                <textarea placeholder="Write your message here..."></textarea>
+
+                <br><br>
+
+                <button class="btn">Submit Request</button>
+
+            </form>
+
+        </section>
 
     </div>
 
-</div>
+    <!-- FOOTER -->
+    <footer>
 
-<footer>
-    © 2026 | Developed by Sarthak
-</footer>
+        <p><strong>Smart Energy Management System</strong></p>
+        <p>Final Year Project | 2026</p>
+        <p>Developed by Sarthak</p>
+
+    </footer>
 
 </body>
+
 </html>

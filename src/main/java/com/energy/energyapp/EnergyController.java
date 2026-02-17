@@ -14,6 +14,7 @@ public class EnergyController {
     @PostMapping("/calculate")
     public String calculate(@RequestParam int units, Model model) {
 
+        
         double bill = units * 12.0;
 
         model.addAttribute("units", units);
